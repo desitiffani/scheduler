@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 09, 2015 at 12:41 PM
+-- Generation Time: Jul 09, 2015 at 04:55 PM
 -- Server version: 5.5.25a
 -- PHP Version: 5.4.4
 
@@ -39,7 +39,14 @@ CREATE TABLE IF NOT EXISTS `dosen` (
   `status` enum('Tidak Aktif','Aktif') NOT NULL,
   PRIMARY KEY (`id_dosen`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `dosen`
+--
+
+INSERT INTO `dosen` (`id_dosen`, `email`, `password`, `nama`, `no_telp`, `alamat`, `keterangan`, `facebook`, `twitter`, `status`) VALUES
+(2, 'dodo@yahoo.com', '721c6ff80a6d3e4ad4ffa52a04c60085', 'Dodo Edodo', '', '', 'dodo itu dosen', '', '', 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -125,7 +132,15 @@ CREATE TABLE IF NOT EXISTS `mahasiswa` (
   `id_universitas` int(11) NOT NULL,
   PRIMARY KEY (`id_mahasiswa`),
   KEY `id_universitas` (`id_universitas`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `mahasiswa`
+--
+
+INSERT INTO `mahasiswa` (`id_mahasiswa`, `email`, `password`, `nama`, `no_telp`, `alamat`, `thn_masuk`, `jurusan`, `status`, `id_universitas`) VALUES
+(2, 'tiffanidesi@yahoo.com', '069e2dd171f61ecffb845190a7adf425', 'Desi Tiffani S.', '', '', 0000, 'Teknik Informatika 2012', 'Aktif', 1),
+(3, 'ichafizha@gmail.com', '9088e8c69e4625a75b5068a3f77d777b', 'Hafizha Husnaisa', '', '', 0000, 'Teknik Informatika 2012', 'Aktif', 1);
 
 -- --------------------------------------------------------
 
@@ -138,7 +153,15 @@ CREATE TABLE IF NOT EXISTS `negara` (
   `nama` varchar(256) NOT NULL,
   `lokasi_geografis` varchar(256) NOT NULL,
   PRIMARY KEY (`id_negara`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `negara`
+--
+
+INSERT INTO `negara` (`id_negara`, `nama`, `lokasi_geografis`) VALUES
+(4, 'Indonesia', ''),
+(5, 'Malaysia', '');
 
 -- --------------------------------------------------------
 
@@ -153,7 +176,15 @@ CREATE TABLE IF NOT EXISTS `provinsi` (
   `lokasi_geografis` varchar(256) NOT NULL,
   PRIMARY KEY (`id_provinsi`),
   KEY `id_negara` (`id_negara`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `provinsi`
+--
+
+INSERT INTO `provinsi` (`id_provinsi`, `nama`, `id_negara`, `lokasi_geografis`) VALUES
+(1, '', 4, 'Jawa Barat'),
+(2, '', 4, 'DI Yogyakarta');
 
 -- --------------------------------------------------------
 
@@ -170,17 +201,21 @@ CREATE TABLE IF NOT EXISTS `universitas` (
   `id_provinsi` int(11) NOT NULL,
   PRIMARY KEY (`id_universitas`),
   KEY `id_provinsi` (`id_provinsi`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `universitas`
+--
+
+INSERT INTO `universitas` (`id_universitas`, `nama`, `no_telp`, `alamat`, `kota`, `id_provinsi`) VALUES
+(1, 'Universitas Komputer Indonesia', '', 'DU', 'Bandung', 1),
+(2, 'Institut Teknologi Bandung', '', 'Jl. Ganesha', 'Bandung', 1),
+(3, 'Institut Teknologi Harapan Bangsa', '', '', 'Bandung', 1),
+(4, 'Universitas Gajah Mada', '', '', 'Jogja', 2);
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `dosen`
---
-ALTER TABLE `dosen`
-  ADD CONSTRAINT `dosen_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `janji` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `dosen_universitas`
@@ -212,14 +247,7 @@ ALTER TABLE `kegiatan`
 -- Constraints for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  ADD CONSTRAINT `mahasiswa_ibfk_2` FOREIGN KEY (`id_universitas`) REFERENCES `universitas` (`id_universitas`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `mahasiswa_ibfk_1` FOREIGN KEY (`id_mahasiswa`) REFERENCES `janji` (`id_mahasiswa`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `negara`
---
-ALTER TABLE `negara`
-  ADD CONSTRAINT `negara_ibfk_1` FOREIGN KEY (`id_negara`) REFERENCES `provinsi` (`id_negara`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `mahasiswa_ibfk_2` FOREIGN KEY (`id_universitas`) REFERENCES `universitas` (`id_universitas`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `provinsi`
