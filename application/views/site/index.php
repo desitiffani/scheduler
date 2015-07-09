@@ -16,19 +16,19 @@
           <?php if($this->session->flashdata('signup_msg') == 'false') { ?>
             <div class="alert alert-danger">
               <a class="close" data-dismiss="alert">×</a>
-              Signup Gagal! Mungkin email tidak terkirim. Silakan hubungi administrator
+              <b>Signup Gagal!</b> Mungkin email tidak terkirim. Silakan hubungi administrator
             </div>
           <?php }else if($this->session->flashdata('signup_msg') == 'true') { ?>
           <div class="alert alert-success">
               <a class="close" data-dismiss="alert">×</a>
-              Signup Berhasil! Silakan cek email anda untuk aktivasi akun.
+              <b>Signup Berhasil!</b> Silakan cek email anda untuk aktivasi akun.
             </div>
           <?php } ?>
 
           <?php if($this->session->flashdata('activation_msg') == 'true') { ?>
             <div class="alert alert-success">
               <a class="close" data-dismiss="alert">×</a>
-              Akun anda telah berhasil diaktifkan. Anda sekarang sudah bisa login.
+              <b>Aktifasi Sukses!</b> Akun anda telah berhasil diaktifkan. Anda sekarang sudah bisa login.
             </div>
           <?php } ?>
 

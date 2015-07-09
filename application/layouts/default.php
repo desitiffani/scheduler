@@ -55,5 +55,6 @@
 	<script src="<?=base_url()?>assets/js/headroom.min.js"></script>
 	<script src="<?=base_url()?>assets/js/jQuery.headroom.min.js"></script>
 	<script src="<?=base_url()?>assets/js/template.js"></script>
+	<script src="<?=base_url()?>assets/js/site/general.js"></script>
 	{{scripts}}
 </html>

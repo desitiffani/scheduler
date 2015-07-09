@@ -34,7 +34,7 @@
 							</div>
 							<div class="top-margin">
 								<label>Email <span class="text-danger">*</span></label>
-								<input type="text" class="form-control" name="email" required>
+								<input type="email" class="form-control" name="email" required>
 							</div>
 							<div class="top-margin">
 								<label>Password <span class="text-danger">*</span></label>
