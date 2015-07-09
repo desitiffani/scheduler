@@ -5,7 +5,7 @@
       <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="panel panel-default">
           <div class="panel-body">
-            <h3 class="thin" align="center"><label>Sign in to your account</label></h3>
+            <h3 class="thin" align="center"><label>Sign in</label></h3>
             <hr>
             <?php if($this->session->flashdata('login_msg') == 'false') { ?>
             <div class="alert alert-danger"> 
@@ -45,3 +45,4 @@
   </div>
 </div>
 </header>
+

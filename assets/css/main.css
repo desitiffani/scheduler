@@ -232,3 +232,13 @@ img.pull-left {
 	margin: 0 5px;
 }
 
+<<<<<<< HEAD
+=======
+	.widget-simplenav { margin-left:-5px; }		
+	.widget-simplenav a{ margin:0 5px; }	
+
+/* MINE CSS */
+.list-group-item{
+	margin-bottom: 10px;
+}
+>>>>>>> origin/master
