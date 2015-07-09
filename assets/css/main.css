@@ -174,10 +174,17 @@ img.pull-left {
 }
 /* Footer */
 .footer1 {
-	background: #232323;
+	
 	font-size: 12px;
 	color: #999;
 	padding-top: 10px;
+	width:100%;
+    background:#232323;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    position: fixed;
+    bottom: 0pt;
+    left: 0pt;
 }
 .footer1 a {
 	color: #ccc;
@@ -224,3 +231,4 @@ img.pull-left {
 .widget-simplenav a {
 	margin: 0 5px;
 }
+
