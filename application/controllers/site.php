@@ -9,7 +9,7 @@ class Site extends CI_Controller {
 		$this->styles 			= array();
 		$this->login_data		= $this->session->userdata('scheduler_user');
 		$this->parts['head'] 	= $this->load->view('partial/head', array('user' => $this->login_data), true);
-		$this->title 			= "Welcome";
+		$this->title 			= "Scheduler";
 	}
 
 	public function index(){
