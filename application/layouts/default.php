@@ -33,7 +33,7 @@
 				<div class="navbar-header">
 					<!-- Button for smallest screens -->
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-					<a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="Scheduler"></a>
+					<a class="navbar-brand" href="<?=base_url()?>"><img src="<?=base_url()?>assets/images/logo.png" alt="Scheduler"></a>
 				</div>
 				<div class="navbar-collapse collapse">
 					{{head}}
@@ -50,7 +50,7 @@
 	</body>
 
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-	<script src="<?=base_url()?>assets/js/1.10.2/jquery-1.8.2.min.js"></script>
+	<script src="<?=base_url()?>assets/js/jquery-1.8.2.min.js"></script>
 	<script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
 	<script src="<?=base_url()?>assets/js/headroom.min.js"></script>
 	<script src="<?=base_url()?>assets/js/jQuery.headroom.min.js"></script>

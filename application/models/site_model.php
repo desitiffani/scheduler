@@ -4,11 +4,16 @@ class Site_model extends CI_Model {
 		parent::__construct();
 	}
 	
-	function login($email, $password) {
+	function login($role, $email, $password) {
 		$where	= array('email' 		  => $email, 
 						'password' 		  => md5($password), 
-						'status_aktivasi' => ACTIVE);
-		$query 	= $this->db->get_where('member', $where)->row_array();
+						'status' => ACTIVE);
+
+		if($role == 'mahasiswa'){
+			$query 	= $this->db->get_where('mahasiswa', $where)->row_array();
+		}else{
+			$query 	= $this->db->get_where('dosen', $where)->row_array();
+		}
 		
 		return ($query ? $query : false);
 	}
