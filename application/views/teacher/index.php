@@ -1,5 +1,5 @@
 <!-- container -->
-<div class="container">
+<div class="container" style="padding-top: 50px;">
 
 	<div class="row">
 		
@@ -11,7 +11,7 @@
 				<div class="col-md-9 col-sm-9">
 					<!-- JUDUL CONTENT-->
 					<header class="page-header">
-						<h1 class="page-title">Jadwal Dosen yang Diikuti <?=date('d M Y')?></h1>
+						<h1 class="page-title">Jadwal Dosen yang Diikuti (<?=date('d M Y')?>)</h1>
 					</header>
 
 					<div class="row">
@@ -26,12 +26,16 @@
 			        					<div class="row">
 			        						<div class="col-md-9">
 			        							<h4><?= $teacher['nama'] ?></h4>
-			        							<p>Jadwal tanggal <?=date('d M Y')?> <br><em>Terakhir update </em></p> 
+			        							<p>Jadwal tanggal <?=date('d M Y')?> (<em>Terakhir update <?=$teacher['terakhir_diedit']?></em>)</p> 
 			        						</div>
-			        						<div class="col-md-2">
-			        							<a href="<?= base_url()?>">
-			        								Lihat Jadwal
+			        						<div class="col-md-3">
+			        							<a href="#" class="view-schedule" data-toggle="modal" data-target="#jadwalDetailModal" data-id="<?=$teacher['id_jadwal']?>" data-name="<?=$teacher['nama']?>">
 			        								<i class="fa fa-eye"></i>
+			        								Lihat Detail Jadwal
+			        							</a> <br/>
+			        							<a href="#" class="view-detail" data-toggle="modal" data-target="#dosenDetailModal" data-id="<?=$teacher['id_dosen']?>" data-name="<?=$teacher['nama']?>">
+			        								<i class="fa fa-user"></i>
+			        								Lihat Detail Dosen
 			        							</a>
 			        						</div>
 			        					</div>
@@ -45,7 +49,7 @@
 				</div>
 
 				<!-- LIST SEMUA DOSEN-->
-				<div class="col-md-3 col-sm-3">
+				<div class="col-md-3 col-sm-3" style="margin-top:30px">
 					<div class="row">
 						<div class="input-group">
 				    		<span class="input-group-btn">
@@ -63,30 +67,38 @@
 	</div>
 </div>	<!-- /container -->
 
-<!-- Reject Modal -->
-<div id="rejectModal" class="modal fade" role="dialog">
+<!-- Detail Jadwal -->
+<div id="jadwalDetailModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Penolakan Ajuan Janji</h4>
-      </div>
-      <form method="POST" action="<?= base_url(). "appointments/reject/" ?>">
-		<input type="hidden" id="id-mhs" name="id_mahasiswa" />
-		<input type="hidden" id="id-dosen" name="id_dosen" />
+      	<div class="modal-header">
+        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+        	<h4 class="modal-title">Detail Jadwal <span id="nama-dosen1"></span> (<?=date('d M Y')?>)</h4>
+      	</div>
+		<div class="modal-body">
+		    <ul class="list-group" id="list-jadwal"></ul>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
+		</div>
+    </div>
+  </div>
+</div>
 
-        <div class="modal-body">
-            <div class="form-group">
-              <p><font color="red">Setelah menolak ajuan janji ini, anda tidak bisa mengubah atau melihat data ini lagi.</font></p> 
-              <label>Isikan alasan mengapa anda tidak menerima janji ini: *</label>
-              <textarea name="alasan_reject" required rows="5" class="form-control"></textarea>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Reject</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-        </div>
-      </form>
+<!-- Detail Dosen -->
+<div id="dosenDetailModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      	<div class="modal-header">
+        	<button type="button" class="close" data-dismiss="modal">&times;</button>
+        	<h4 class="modal-title">Detail Dosen <span id="nama-dosen2"></span></h4>
+      	</div>
+		<div class="modal-body">
+		    <div class="form-group" id="detail-dosen"></div>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
+		</div>
     </div>
   </div>
 </div>
