@@ -234,3 +234,12 @@ img.pull-left {
 	margin: 0 5px;
 }
 
+/* MINE CSS */
+.clear{
+	clear: both;
+}
+
+.list-group-item{
+	margin-bottom: 10px;
+}
+

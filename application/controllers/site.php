@@ -128,6 +128,57 @@ class Site extends CI_Controller {
 		}
 	}
 
+	function edit_profile(){
+		if($this->login_data['role'] == 'mahasiswa'){
+			$this->load->model('mahasiswa');
+			$data['role'] = "mahasiswa";
+			$data['detail'] = $this->mahasiswa->get(array('id_mahasiswa' => $this->login_data['id_mahasiswa']))->row_array();
+			$data['id'] = $data['detail']['id_mahasiswa'];
+		}else if($this->login_data['role'] == 'dosen'){
+			$this->load->model('dosen');
+			$data['detail'] = $this->dosen->get(array('id_dosen' => $this->login_data['id_dosen']))->row_array();
+			$data['role'] = "dosen";
+			$data['id'] = $data['detail']['id_dosen'];
+		}
+		$this->load->view('site/edit_profile', $data);
+	}
+
+	function save_profile(){
+		$role = $this->input->post('role');
+		$id = $this->input->post('id');
+		$data_post = array('nama' => $this->input->post('nama'), 
+						   'no_telp' => $this->input->post('no_telp'),
+						   'alamat' => $this->input->post('alamat'));
+
+		$password = $this->input->post('password');
+		if(!empty($password)){
+			$data_post['password'] = $password;
+		}
+
+		if($role == 'mahasiswa'){
+			$data_post['thn_masuk'] = $this->input->post('tahun_masuk');
+			$data_post['jurusan'] = $this->input->post('jurusan');
+
+			$this->load->model('mahasiswa');
+			$success = $this->mahasiswa->edit($id, $data_post);
+		}else{
+			$data_post['keterangan'] = $this->input->post('keterangan');
+			$data_post['facebook'] = $this->input->post('facebook');
+			$data_post['twitter'] = $this->input->post('twitter');
+
+			$this->load->model('dosen');
+			$success = $this->dosen->edit($id, $data_post);
+		}
+
+		if($success){
+			$this->session->set_flashdata('profile_msg', 'true');
+			redirect($_SERVER['HTTP_REFERER']);
+		}else{
+			$this->session->set_flashdata('profile_msg', 'false');
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+	}
+
 	function logout(){
 		if($this->session->userdata('scheduler_user')) {
 			$this->session->unset_userdata('scheduler_user');

@@ -16,7 +16,7 @@
 
         <a href="<?= base_url() . "appointments" ?>">
             <div class="col-md-4 col-sm-6 highlight">
-                <div class="h-caption"><h4><i class="fa fa-heart fa-5"></i>Janji</h4></div>
+                <div class="h-caption"><h4><i class="fa fa-thumbs-up fa-5"></i>Janji</h4></div>
             </div>
         </a>			
         <a href="<?= base_url() . "site/edit_profile" ?>">

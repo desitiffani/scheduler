@@ -1,5 +1,3 @@
-<header id="head" class="secondary"></header>
-
 <!-- container -->
 <div class="container">
 

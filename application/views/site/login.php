@@ -9,7 +9,8 @@
             <hr>
             <?php if($this->session->flashdata('login_msg') == 'false') { ?>
             <div class="alert alert-danger"> 
-            	<a class="close" data-dismiss="alert">×</a> Login Gagal! Username / password salah, atau mungkin akun anda belum aktif. </div>
+            	<a class="close" data-dismiss="alert">×</a> Login Gagal! Username / password salah, atau mungkin akun anda belum aktif. 
+            </div>
             <?php } ?>
             <form method="POST">
               <div class="top-margin">

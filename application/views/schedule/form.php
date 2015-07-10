@@ -1,8 +1,8 @@
 <div class="container">
 	<div class="row">
-				<h1 class="page-title col-md-6">Tambah Aktifitas untuk <?=date('d M Y')?></h1>
+			<h1 class="page-title col-md-12">Tambah Aktifitas untuk <?=date('d M Y')?></h1>
 			<div class="row">
-				<div class="col-md-5 col-sm-12">			
+				<div class="col-md-5 col-sm-12 col-md-offset-3">			
 					<form method="POST" action="<?= base_url() . "schedules/save" ?>">
 						<input type="hidden" name="mode" value="<?= $mode ?>" />
 						<?php if ($mode == 'EDIT') { ?>
