@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="<?=base_url()?>assets/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?=base_url()?>assets/css/bootstrap-theme.css" media="screen" >
 		<link rel="stylesheet" href="<?=base_url()?>assets/css/main.css">
+		<script type="text/javascript">var base_url = <?php echo json_encode(base_url());?>;</script>
 	</head>
 	
 	<body>		
