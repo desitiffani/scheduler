@@ -15,30 +15,9 @@
 					</header>
 
 					<div class="row">
-						<?php if($this->session->flashdata('approve_msg') == 'true') { ?>
-			              <div class="alert alert-success">
-			                <a class="close" data-dismiss="alert">×</a>
-			                <b>Approve sukses!</b> Ajuan Janji telah disetujui.
-			              </div>
-			            <?php }else if($this->session->flashdata('approve_msg') == 'false'){ ?>
-			            	<div class="alert alert-danger">
-				                <a class="close" data-dismiss="alert">×</a>
-				                <b>Approve gagal!</b> Ajuan Janji tidak dapat disetujui, mungkin ada kesalahan. Silakan ulangi lagi.
-				              </div>
-			            <?php } ?>
+						<!-- Error Handling-->
 
-			            <?php if($this->session->flashdata('reject_msg') == 'true') { ?>
-			              <div class="alert alert-success">
-			                <a class="close" data-dismiss="alert">×</a>
-			                <b>Reject sukses!</b> Ajuan Janji telah ditolak.
-			              </div>
-			            <?php }else if($this->session->flashdata('reject_msg') == 'false'){ ?>
-			            	<div class="alert alert-danger">
-				                <a class="close" data-dismiss="alert">×</a>
-				                <b>Reject gagal!</b> Ajuan Janji tidak dapat ditolak, mungkin ada kesalahan. Silakan ulangi lagi.
-				              </div>
-			            <?php } ?>
-
+						<!-- DAFTAR DOSEN HIGHLIGHT-->
 	        			<ul class="list-group">
 	        				<?php 
 	        				if(count($teachers) > 0) {
@@ -50,7 +29,10 @@
 			        							<p>Jadwal tanggal <?=date('d M Y')?> <br><em>Terakhir update </em></p> 
 			        						</div>
 			        						<div class="col-md-2">
-			        							
+			        							<a href="<?= base_url()?>">
+			        								Lihat Jadwal
+			        								<i class="fa fa-eye"></i>
+			        							</a>
 			        						</div>
 			        					</div>
 			        				</li>
