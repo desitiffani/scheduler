@@ -9,7 +9,7 @@
 #head.secondary {
 	height: 100px;
 	min-height: 100px;
-	padding-top: 0px;
+	padding-top: 90px;
 }
 #head .lead {
 	font-family: "Open sans", Helvetica, Arial;
@@ -22,13 +22,13 @@
 #head .tagline {
 	color: rgba(255,255,255,0.75);
 	margin-bottom: 25px;
-	text-align: : center;
+	text-align: center;
 }
 #head .tagline a {
 	color: #fff;
 }
 #head .btn {
-	margin-bottom: 10px;
+	margin-bottom: 3px;
 }
 #head .btn-default {
 	text-shadow: none;

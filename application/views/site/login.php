@@ -1,4 +1,4 @@
-<header id="head">
+<header id="head" class="secondary">
 <div class="container">
   <div class="row">
  	<article class="col-xs-12 maincontent">

@@ -1,3 +1,4 @@
+<header id="head" class="secondary">
 <div class="container">		
     <div class="row">
         <?php if($user['role'] == 'mahasiswa'){ ?>
@@ -27,3 +28,4 @@
         </a>
     </div> 
 </div>
+</header>

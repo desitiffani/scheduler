@@ -1,5 +1,3 @@
-<!doctype html>
-<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -28,10 +26,9 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					{{head}}
-				</div><!--/.nav-collapse -->
+				</div>
 			</div>
 		</div> 
-		<!-- /.navbar -->
 		
 		{{content}}
 		

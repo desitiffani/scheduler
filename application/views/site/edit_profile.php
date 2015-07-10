@@ -1,11 +1,11 @@
-<div class="container" style="padding-bottom: 50px;">
+<div class="container" style="padding-top: 50px;">
 	<div class="row">
 			<h1 class="page-title col-md-7 col-md-offset-3">Edit Profile</h1>
 			<div class="row">
-				<!--<div class="col-md-5">
+				<div class="col-md-5">
 					<img src="<?= base_url() . "assets/attachment/profile/" . $role . "_" . $id ?>" />
 					<input type="file" name="foto" class="btn btn-info" />
-				</div>-->
+				</div>
 				<div class="col-md-4 col-md-offset-4 col-sm-12">			
 					<?php if($this->session->flashdata('profile_msg') == 'true') { ?>
 		              <div class="alert alert-success">

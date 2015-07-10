@@ -1,4 +1,4 @@
-<header id="head">
+<header id="head" style="padding-top: 5px;">
   <div class="container">
     <div class="row">
       <h1 class="lead text-center">SCHEDULER</h1>

@@ -1,9 +1,5 @@
-<!-- container -->
-<div class="container">
-
+<div class="container" style="padding-top: 50px;">
 	<div class="row">
-		
-		<!-- Article main content -->
 		<article class="col-xs-12 maincontent">
 			<div class="row">
 				<header class="page-header col-md-12">
@@ -48,7 +44,5 @@
 			</div>
 			
 		</article>
-		<!-- /Article -->
-
 	</div>
-</div>	<!-- /container -->
+</div>
