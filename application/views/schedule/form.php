@@ -28,7 +28,7 @@
 						</div>
 						<div class="top-margin">
 							<label>Tempat <span class="text-danger">*</span></label>
-							<textarea class="form-control" name="tempat" required rows="5"><?=$mode == 'EDIT' ? $detail['tempat'] : ''?></textarea>
+							<textarea class="form-control" name="tempat" required rows="1"><?=$mode == 'EDIT' ? $detail['tempat'] : ''?></textarea>
 						</div>
 						<div class="top-margin">
 							<label>Letak Geografis</label>

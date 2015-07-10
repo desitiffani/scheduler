@@ -6,7 +6,7 @@
 					<img src="<?= base_url() . "assets/attachment/profile/" . $role . "_" . $id ?>" />
 					<input type="file" name="foto" class="btn btn-info" />
 				</div>-->
-				<div class="col-md-7 col-md-offset-3 col-sm-12">			
+				<div class="col-md-4 col-md-offset-4 col-sm-12">			
 					<?php if($this->session->flashdata('profile_msg') == 'true') { ?>
 		              <div class="alert alert-success">
 		                <a class="close" data-dismiss="alert">×</a>
