@@ -1,13 +1,10 @@
-<!-- Header -->
 <header id="head">
   <div class="container">
     <div class="row">
-      <h1 class="lead">SCHEDULER</h1>
-      <p class="tagline">Keep in touch with your teacher activity</p>
-
+      <h1 class="lead text-center">SCHEDULER</h1>
+      <p class="tagline text-center">Keep in touch with your teacher activity</p>
       <hr/>
-
-      <div class="col-md-6 col-md-offset-3 col-sm-12">
+      <div class="col-md-4 col-md-offset-4 col-sm-12">
         <p>
           Sudah punya account? <a href="<?=base_url() . "site/login" ?>" class="btn btn-primary">Log In</a>
         </p>
@@ -35,10 +32,10 @@
           <div class="form-group">
             <label>Mendaftar Sebagai *</label><br/>
             <div class="form-control">
-              <div class="col-md-4 col-md-offset-2">
+              <div class="col-md-5 col-md-offset-2">
                 <input type="radio" name="role" checked value="mhs" class="user-role" /> Mahasiswa
               </div>
-              <div class="col-md-4">
+              <div class="col-md-5">
                 <input type="radio" name="role" value="dsn" class="user-role" /> Dosen
               </div>
             </div>
