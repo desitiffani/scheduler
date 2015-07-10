@@ -17,6 +17,7 @@ class Teachers extends CI_Controller {
 		$this->scripts[] = "site/teacher";
 		$data['teachers'] = $this->dosen->get_highlight($this->login_data['id_mahasiswa']);
 		$data['user'] = $this->login_data;
+		$data['allteachers'] = $this->dosen->get_all($this->login_data['id_universitas']);
 		$this->load->view('teacher/index', $data);
 	}
 
@@ -33,6 +34,8 @@ class Teachers extends CI_Controller {
 		$this->layout = false; //hide layouting
 		echo json_encode($this->dosen->get(array('id_dosen' => $id))->row_array());
 	}
+
+
 
 	
 }

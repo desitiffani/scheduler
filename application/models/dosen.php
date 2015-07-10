@@ -11,6 +11,14 @@ class Dosen extends CI_Model {
 		return $this->db->get('dosen');
 	}
 
+	function get_all($id_universitas){
+		$this->db->select('du.id_dosen, du.id_universitas, d.nama');
+		$this->db->from('dosen_universitas as du');
+		$this->db->join('dosen as d', 'd.id_dosen = du.id_dosen');
+		$this->db->where('du.id_universitas', $id_universitas);
+		return $this->db->get()->result_array();
+	}
+
 	function get_highlight($id_mahasiswa){
 		$this->db->select('d.id_dosen, d.nama, j.id_jadwal, j.terakhir_diedit');
 		$this->db->from('dosen_highlight as dh');

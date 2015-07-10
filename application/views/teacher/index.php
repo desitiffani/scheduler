@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-<div class="container">
-=======
 <!-- container -->
 <div class="container" style="padding-top: 50px;">
 
->>>>>>> origin/master
+
 	<div class="row">
 		<article class="col-xs-12 maincontent">
 			<div class="row">
@@ -13,7 +10,7 @@
 				<div class="col-md-9 col-sm-9">
 					<!-- JUDUL CONTENT-->
 					<header class="page-header">
-						<h1 class="page-title">Jadwal Dosen yang Diikuti (<?=date('d M Y')?>)</h1>
+						<h1 class="page-title">Jadwal Dosen yang Dihighlight (<?=date('d M Y')?>)</h1>
 					</header>
 
 					<div class="row">
@@ -59,8 +56,29 @@
 				    				<i class="fa fa-search"></i>
 				    			</button>
 				      		</span>
-				      		<input type="text" class="form-control" placeholder="Search for...">
+				      		<input type="text" class="form-control" placeholder="Search for dosen">
 				    	</div>
+					</div>
+					<div class="row">
+						<ul class="list-group">
+							<?php 
+	        				if(count($allteachers) > 0) {
+	        					foreach ($allteachers as $teacher1) { ?>
+									<li class="list-group-item">
+										<p>
+											<?= $teacher1['nama'] ?>
+
+											<button id="highlight" name="highlightButton" class="btn btn-primary btn-sm pull-right highlighted">
+												<i class="fa fa-star-o"></i>
+												<span class="text">Highlight</span>
+											</button>
+										</p>
+									</li>
+							<?php }
+	        				} else {
+	        					echo "<p class='text-center'>Dosen tidak ditemukan!</p>";
+	        				} ?>
+						</ul>
 					</div>
 				</div>
 		</article>
@@ -102,3 +120,21 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+	$('#highlight').on('click', function(e) {
+	    var btn = $(this),
+	        icon = btn.find('.fa'),
+	        text = btn.find('.text'),
+	        toggleClass = 'highlighted';
+
+	    if (btn.hasClass(toggleClass)) {
+	        icon.removeClass('fa-star-o').addClass('fa-star');
+	        text.text('Unhighlight');
+	    } else {
+	        icon.removeClass('fa-star').addClass('fa-star-o');
+	        text.text('Highlight');
+	    }
+	    btn.toggleClass(toggleClass);
+	});
+</script>
