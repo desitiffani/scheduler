@@ -1,17 +1,12 @@
-<!-- Header -->
-<header id="head">
   <div class="container">
     <div class="row">
       <h1 class="lead">SCHEDULER</h1>
       <p class="tagline">Keep in touch with your teacher activity</p>
-
       <hr/>
-
       <div class="col-md-6 col-md-offset-3 col-sm-12">
         <p>
           Sudah punya account? <a href="<?=base_url() . "site/login" ?>" class="btn btn-primary">Log In</a>
         </p>
-
         <form method="POST" action="<?= base_url() . "site/signup" ?>">
           <?php if($this->session->flashdata('signup_msg') == 'false') { ?>
             <div class="alert alert-danger">
@@ -81,15 +76,3 @@
       </div>
     </div>
   </div>
-</header>
-<!-- /Header -->
-
-<style>
-.navbar-fixed-top{
-  display: none
-}
-
-label{
-  color: #fff;
-}
-</style>

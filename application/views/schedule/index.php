@@ -1,11 +1,6 @@
-<header id="head" class="secondary"></header>
-
-<!-- container -->
+<header id="head">
 <div class="container">
-
 	<div class="row">
-		
-		<!-- Article main content -->
 		<article class="col-xs-12 maincontent">
 			<div class="row">
 				<header class="page-header col-md-12">
@@ -62,9 +57,7 @@
         			</ul>
         		</div>
 			</div>
-			
 		</article>
-		<!-- /Article -->
-
 	</div>
-</div>	<!-- /container -->
+</div>
+</header>
