@@ -17,7 +17,7 @@
 	margin-bottom: 6px;
 	color: white;
 	line-height: 1.15em;
-	text-align: : center;
+	text-align: center;
 }
 #head .tagline {
 	color: rgba(255,255,255,0.75);
@@ -243,3 +243,12 @@ img.pull-left {
 	margin-bottom: 10px;
 }
 
+#calalender{
+	background-image:url(../images/1.png) no-repeat;
+}
+#user{
+	background-image:url(../images/2.png) no-repeat;
+}
+#janji{
+	background-image:url(../images/3.png) no-repeat;
+}

@@ -1,9 +1,5 @@
-<!-- container -->
 <div class="container">
-
 	<div class="row">
-		
-		<!-- Article main content -->
 		<article class="col-xs-12 maincontent">
 			<div class="row">
 				
@@ -58,10 +54,8 @@
 					</div>
 				</div>
 		</article>
-		<!-- /Article -->
-
 	</div>
-</div>	<!-- /container -->
+</div>
 
 <!-- Reject Modal -->
 <div id="rejectModal" class="modal fade" role="dialog">

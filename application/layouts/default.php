@@ -5,7 +5,7 @@
 		<meta name="description" content="">
 		<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
 		<title>Scheduler</title>
-		<link rel="shortcut icon" href="assets/images/gt_favicon.png">
+		<link rel="shortcut icon" href="<?=base_url()?>assets/images/gt_favicon.png">
 		<link rel="stylesheet" media="screen" href="<?=base_url()?>assets/css/fonts.css">
 		<link rel="stylesheet" href="<?=base_url()?>assets/css/bootstrap.min.css">
 		<link rel="stylesheet" href="<?=base_url()?>assets/css/font-awesome.min.css">
@@ -19,7 +19,11 @@
 			<div class="container">
 				<div class="navbar-header">
 					<!-- Button for smallest screens -->
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span> 
+                        <span class="icon-bar"></span> 
+                        <span class="icon-bar"></span> 
+                    </button>
 					<a class="navbar-brand" href="<?=base_url()?>">
                     	<img src="<?=base_url()?>assets/images/logo.png" alt="Scheduler">
                     </a>
