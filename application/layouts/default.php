@@ -14,12 +14,7 @@
 		<link rel="stylesheet" href="<?=base_url()?>assets/css/bootstrap-theme.css" media="screen" >
 		<link rel="stylesheet" href="<?=base_url()?>assets/css/main.css">
 	</head>
-    	<script src="<?=base_url()?>assets/js/jquery-1.8.2.min.js"></script>
-		<script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
-        <script src="<?=base_url()?>assets/js/headroom.min.js"></script>
-        <script src="<?=base_url()?>assets/js/jQuery.headroom.min.js"></script>
-        <script src="<?=base_url()?>assets/js/template.js"></script>
-
+	
 	<body>		
 		<!-- Fixed navbar -->
 		<div class="navbar navbar-inverse navbar-fixed-top headroom" >
@@ -49,3 +44,10 @@
 		</div>
 	</body>
 </html>
+
+<script src="<?=base_url()?>assets/js/jquery-1.8.2.min.js"></script>
+<script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
+<script src="<?=base_url()?>assets/js/headroom.min.js"></script>
+<script src="<?=base_url()?>assets/js/jQuery.headroom.min.js"></script>
+<script src="<?=base_url()?>assets/js/template.js"></script>
+{{scripts}}

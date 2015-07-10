@@ -23,9 +23,20 @@ class Appointment extends CI_Model {
 		return $this->db->get();
 	}
 
+	function get_with_teacher($where = NULL){
+		$this->db->select('d.nama as nama_dosen, j.*');
+		$this->db->from('janji as j');
+		$this->db->join('dosen as d', 'j.id_dosen = d.id_dosen');
+		if($where != NULL){
+			$this->db->where($where);
+		}
+		$this->db->order_by('j.status');
+		$this->db->order_by('j.waktu_buat_janji', 'DESC');
+		return $this->db->get();
+	}
+
 	function add($data){
-		$this->db->insert('janji', $data);
-		return $this->db->insert_id();
+		return $this->db->insert('janji', $data);
 	}
 
 	function edit($id_mhs, $id_dsn, $data){
@@ -34,8 +45,9 @@ class Appointment extends CI_Model {
 		return $this->db->update('janji', $data);
 	}
 
-	function delete($id){
-		$this->db->where('id_janji', $id);
+	function delete($id_mhs, $id_dosen){
+		$this->db->where('id_mahasiswa', $id_mhs);
+		$this->db->where('id_dosen', $id_dsn);
 		return $this->db->delete('janji');
 	}
 	

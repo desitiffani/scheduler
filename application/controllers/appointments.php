@@ -18,42 +18,43 @@ class Appointments extends CI_Controller {
 
 		if($this->login_data['role'] == 'dosen'){
 			$data['appointments'] = $this->appointment->get_with_student(array('j.id_dosen' => $this->login_data['id_dosen'], 'j.status != ' => 'Rejected'))->result_array();
+			$view = 'appointment/index';
 		}elseif($this->login_data['role'] == 'mahasiswa'){
-			/* TO DO MENAMPILKAN JANJI YANG TELAH DIBUAT OLEH MAHASISWA */
+			$data['appointments'] = $this->appointment->get_with_teacher(array('j.id_mahasiswa' => $this->login_data['id_mahasiswa']))->result_array();
+			$view = 'appointment/index_mhs';
 		}
 		$data['user'] = $this->login_data;
-		$this->load->view('appointment/index', $data);
+		$this->load->view($view, $data);
 	}
 
 	public function add(){
-		$data['mode'] = 'ADD';
+		$this->load->model('dosen');
+
+		$data['teachers'] = $this->dosen->get_highlight($this->login_data['id_mahasiswa']);
 		$this->load->view('appointment/form', $data);
 	}
 
 	public function save(){
-		$data_post = array('judul' => $this->input->post('judul'),
-						   'jam_mulai' => $this->input->post('jam_mulai'), 
-						   'jam_selesai' => $this->input->post('jam_selesai'),
-						   'tempat' => $this->input->post('tempat'),
-						   'letak_geografis' => $this->input->post('letak_geografis'),
-						   'id_jadwal' => $this->login_data['id_jadwal']);
+		$data_post = array('id_mahasiswa' => $this->login_data['id_mahasiswa'],
+						   'id_dosen' => $this->input->post('id_dosen'), 
+						   'keterangan' => $this->input->post('keterangan'),
+						   'waktu_janji' => $this->input->post('waktu_janji'));
 
-		if($status){
-			$this->session->set_flashdata('add_activity_msg', 'true');
-			redirect(base_url() . "schedules");
+		$success = $this->appointment->add($data_post);
+		
+		if($success){
+			$this->session->set_flashdata('add_appointment_msg', 'true');
+			redirect(base_url() . "appointments");
 		}else{
-			$this->session->set_flashdata('add_activity_msg', 'false');
-			redirect(base_url() . "schedules");
+			$this->session->set_flashdata('add_appointment_msg', 'false');
+			redirect(base_url() . "appointments");
 		}
 	}
 
-	public function delete($id){
-		if($this->schedule->delete_activity($id)){
-			$this->session->set_flashdata('delete_activity_msg', 'true');
-			redirect(base_url() . "schedules");
-		}else{
-			$this->session->set_flashdata('delete_activity_msg', 'false');
-			redirect(base_url() . "schedules");
+	public function delete($id_mhs, $id_dosen){
+		if($this->appointment->delete($id_mhs, $id_dosen)){
+			$this->session->set_flashdata('delete_appointment_msg', 'true');
+			redirect(base_url() . "appointments");
 		}
 	}
 

@@ -7,12 +7,7 @@
 		<article class="col-xs-12 maincontent">
 			<div class="row">
 				<header class="page-header col-md-12">
-					<?php if($user['role'] == 'dosen'){ ?>
-						<h1 class="page-title col-md-9">Mahasiswa yang ingin membuat janji dengan anda:</h1>
-					<?php }else if($user['role'] == 'mahasiswa'){ ?>
-						<h1 class="page-title col-md-9">Janji</h1>
-						<a class="col-md-2 btn btn-primary" href="<?= base_url() . "appointments/add" ?>">Ajukan Janji Baru</a>
-					<?php } ?>
+					<h1 class="page-title col-md-9">Mahasiswa yang ingin membuat janji dengan anda:</h1>
 				</header>
 			</div>
 			
