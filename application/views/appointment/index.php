@@ -1,0 +1,107 @@
+<header id="head" class="secondary"></header>
+
+<!-- container -->
+<div class="container">
+
+	<div class="row">
+		
+		<!-- Article main content -->
+		<article class="col-xs-12 maincontent">
+			<div class="row">
+				<header class="page-header col-md-12">
+					<?php if($user['role'] == 'dosen'){ ?>
+						<h1 class="page-title col-md-9">Mahasiswa yang ingin membuat janji dengan anda:</h1>
+					<?php }else if($user['role'] == 'mahasiswa'){ ?>
+						<h1 class="page-title col-md-9">Janji</h1>
+						<a class="col-md-2 btn btn-primary" href="<?= base_url() . "appointments/add" ?>">Ajukan Janji Baru</a>
+					<?php } ?>
+				</header>
+			</div>
+			
+			<div class="col-md-12 col-sm-12">
+				<div class="row">
+					<?php if($this->session->flashdata('approve_msg') == 'true') { ?>
+		              <div class="alert alert-success">
+		                <a class="close" data-dismiss="alert">×</a>
+		                <b>Approve sukses!</b> Ajuan Janji telah disetujui.
+		              </div>
+		            <?php }else if($this->session->flashdata('approve_msg') == 'false'){ ?>
+		            	<div class="alert alert-danger">
+			                <a class="close" data-dismiss="alert">×</a>
+			                <b>Approve gagal!</b> Ajuan Janji tidak dapat disetujui, mungkin ada kesalahan. Silakan ulangi lagi.
+			              </div>
+		            <?php } ?>
+
+		            <?php if($this->session->flashdata('reject_msg') == 'true') { ?>
+		              <div class="alert alert-success">
+		                <a class="close" data-dismiss="alert">×</a>
+		                <b>Reject sukses!</b> Ajuan Janji telah ditolak.
+		              </div>
+		            <?php }else if($this->session->flashdata('reject_msg') == 'false'){ ?>
+		            	<div class="alert alert-danger">
+			                <a class="close" data-dismiss="alert">×</a>
+			                <b>Reject gagal!</b> Ajuan Janji tidak dapat ditolak, mungkin ada kesalahan. Silakan ulangi lagi.
+			              </div>
+		            <?php } ?>
+
+        			<ul class="list-group">
+        				<?php foreach ($appointments as $appointment) { ?>
+        					<li class="list-group-item col-md-12">
+	        					<div class="row">
+	        						<div class="col-md-9">
+	        							<h4><?= $appointment['nama_mhs'] ?></h4>
+	        							<p>Ingin bertemu pada <b><?= date("d M Y - H:m", strtotime($appointment['waktu_janji'])); ?></b> <i> <?= "(diajukan pada " . $appointment['waktu_buat_janji'] . ")" ?></i>
+	        						</div>
+	        						<div class="col-md-2">
+	        							<?php if($appointment['status'] == 'Pending'){ ?>
+	        								<a href="<?= base_url(). "appointments/approve/" . $appointment['id_mahasiswa'] . "/" . $appointment['id_dosen'] ?>" onclick="return confirm_approve()">
+		        								<i class="fa fa-check fa-5"></i> Terima
+		        							</a>
+		        							<a href="#" class="reject-appointment" data-toggle="modal" data-target="#rejectModal" data-id-mhs="<?=$appointment['id_mahasiswa']?>" data-id-dosen="<?=$appointment['id_dosen']?>">
+		        								<i class="fa fa-close fa-5"></i> Tolak
+		        							</a>
+	        							<?php } else{
+	        								echo "<font color='green'><b>Sudah diterima</b></font>";
+	        							} ?>
+	        						</div>
+	        					</div>
+	        				</li>
+        				<?php } ?>
+        			</ul>
+        		</div>
+			</div>
+			
+		</article>
+		<!-- /Article -->
+
+	</div>
+</div>	<!-- /container -->
+
+<!-- Reject Modal -->
+<div id="rejectModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Penolakan Ajuan Janji</h4>
+      </div>
+      <form method="POST" action="<?= base_url(). "appointments/reject/" ?>">
+		<input type="hidden" id="id-mhs" name="id_mahasiswa" />
+		<input type="hidden" id="id-dosen" name="id_dosen" />
+
+        <div class="modal-body">
+            <div class="form-group">
+              <p><font color="red">Setelah menolak ajuan janji ini, anda tidak bisa mengubah atau melihat data ini lagi.</font></p> 
+              <label>Isikan alasan mengapa anda tidak menerima janji ini: *</label>
+              <textarea name="alasan_reject" required rows="5" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Reject</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

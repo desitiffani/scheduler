@@ -4,3 +4,10 @@ function confirm_delete() {
 		return false;
 	}
 }
+
+/*approve confirmation*/
+function confirm_approve() {
+	if(confirm("Apakah anda yakin akan menerima janji ini?") == false) {
+		return false;
+	}
+}

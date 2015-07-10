@@ -29,13 +29,13 @@
 							<label>Jam (h:m) <span class="text-danger">*</span></label>
 							<div class="row">
 								<div class="col-md-4">
-									<input type="time" class="form-control" name="jam_mulai" required value="<?=$mode == 'EDIT' ? $detail['jam_mulai'] : ''?>">
+									<input type="text" class="form-control" name="jam_mulai" required value="<?=$mode == 'EDIT' ? $detail['jam_mulai'] : ''?>">
 								</div>
 								<div class="col-md-1">
 									sampai
 								</div>
 								<div class="col-md-4">
-									<input type="time" class="form-control" name="jam_selesai" required value="<?=$mode == 'EDIT' ? $detail['jam_selesai'] : ''?>">
+									<input type="text" class="form-control" name="jam_selesai" required value="<?=$mode == 'EDIT' ? $detail['jam_selesai'] : ''?>">
 								</div>
 							</div>
 						</div>
