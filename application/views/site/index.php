@@ -1,29 +1,34 @@
+<!-- Header -->
+<header id="head">
   <div class="container">
     <div class="row">
       <h1 class="lead">SCHEDULER</h1>
       <p class="tagline">Keep in touch with your teacher activity</p>
+
       <hr/>
+
       <div class="col-md-6 col-md-offset-3 col-sm-12">
         <p>
           Sudah punya account? <a href="<?=base_url() . "site/login" ?>" class="btn btn-primary">Log In</a>
         </p>
+
         <form method="POST" action="<?= base_url() . "site/signup" ?>">
           <?php if($this->session->flashdata('signup_msg') == 'false') { ?>
             <div class="alert alert-danger">
               <a class="close" data-dismiss="alert">×</a>
-              <b>Signup Gagal!</b> Mungkin email tidak terkirim. Silakan hubungi administrator
+              Signup Gagal! Mungkin email tidak terkirim. Silakan hubungi administrator
             </div>
           <?php }else if($this->session->flashdata('signup_msg') == 'true') { ?>
           <div class="alert alert-success">
               <a class="close" data-dismiss="alert">×</a>
-              <b>Signup Berhasil!</b> Silakan cek email anda untuk aktivasi akun.
+              Signup Berhasil! Silakan cek email anda untuk aktivasi akun.
             </div>
           <?php } ?>
 
           <?php if($this->session->flashdata('activation_msg') == 'true') { ?>
             <div class="alert alert-success">
               <a class="close" data-dismiss="alert">×</a>
-              <b>Aktifasi Sukses!</b> Akun anda telah berhasil diaktifkan. Anda sekarang sudah bisa login.
+              Akun anda telah berhasil diaktifkan. Anda sekarang sudah bisa login.
             </div>
           <?php } ?>
 
@@ -76,3 +81,19 @@
       </div>
     </div>
   </div>
+</header>
+<!-- /Header -->
+
+<style>
+.navbar-fixed-top{
+  display: none
+}
+
+label{
+  color: #fff;
+}
+
+#head{
+  background: #181015 url( ./assets/images/bg_header.jpg) no-repeat;
+}
+</style>

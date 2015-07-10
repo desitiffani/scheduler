@@ -20,20 +20,26 @@
         <script src="<?=base_url()?>assets/js/jQuery.headroom.min.js"></script>
         <script src="<?=base_url()?>assets/js/template.js"></script>
 
-	<body>
-		<!-- Fixed navbar  -->
-		<div class="navbar navbar-inverse navbar-fixed-top" >
+	<body>		
+		<!-- Fixed navbar -->
+		<div class="navbar navbar-inverse navbar-fixed-top headroom" >
 			<div class="container">
 				<div class="navbar-header">
+					<!-- Button for smallest screens -->
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 					<a class="navbar-brand" href="<?=base_url()?>">
                     	<img src="<?=base_url()?>assets/images/logo.png" alt="Scheduler">
                     </a>
 				</div>
+				<div class="navbar-collapse collapse">
+					{{head}}
+				</div><!--/.nav-collapse -->
 			</div>
-		</div>
-        
+		</div> 
 		<!-- /.navbar -->
+		
 		{{content}}
+		
 		<div class="footer1 ">
           <div class="container">
               <p class="text-center">

@@ -1,10 +1,10 @@
 /* Header */
 #head {
-	background: #181015 url( ../images/bg_header.jpg) no-repeat;
 	background-size: cover;
 	color: white;
 	font-family: "Open sans", Helvetica, Arial;
 	font-weight: 200;
+	padding: 40px 0;
 }
 #head.secondary {
 	height: 100px;
@@ -17,10 +17,12 @@
 	margin-bottom: 6px;
 	color: white;
 	line-height: 1.15em;
+	text-align: : center;
 }
 #head .tagline {
 	color: rgba(255,255,255,0.75);
 	margin-bottom: 25px;
+	text-align: : center;
 }
 #head .tagline a {
 	color: #fff;
@@ -232,13 +234,3 @@ img.pull-left {
 	margin: 0 5px;
 }
 
-<<<<<<< HEAD
-=======
-	.widget-simplenav { margin-left:-5px; }		
-	.widget-simplenav a{ margin:0 5px; }	
-
-/* MINE CSS */
-.list-group-item{
-	margin-bottom: 10px;
-}
->>>>>>> origin/master
