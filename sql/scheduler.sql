@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 09, 2015 at 04:55 PM
+-- Generation Time: Jul 10, 2015 at 10:32 AM
 -- Server version: 5.5.25a
 -- PHP Version: 5.4.4
 
@@ -46,7 +46,29 @@ CREATE TABLE IF NOT EXISTS `dosen` (
 --
 
 INSERT INTO `dosen` (`id_dosen`, `email`, `password`, `nama`, `no_telp`, `alamat`, `keterangan`, `facebook`, `twitter`, `status`) VALUES
-(2, 'dodo@yahoo.com', '721c6ff80a6d3e4ad4ffa52a04c60085', 'Dodo Edodo', '', '', 'dodo itu dosen', '', '', 'Aktif');
+(2, 'dodo@yahoo.com', '721c6ff80a6d3e4ad4ffa52a04c60085', 'Dodo Edodo', '56526252', 'cimahi', 'dodo itu dosen', '', '', 'Aktif');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dosen_highlight`
+--
+
+CREATE TABLE IF NOT EXISTS `dosen_highlight` (
+  `id_dosen` int(11) NOT NULL,
+  `id_mahasiswa` int(11) NOT NULL,
+  `waktu` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  KEY `id_dosen` (`id_dosen`),
+  KEY `id_mahasiswa` (`id_mahasiswa`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dosen_highlight`
+--
+
+INSERT INTO `dosen_highlight` (`id_dosen`, `id_mahasiswa`, `waktu`) VALUES
+(2, 2, '2015-07-10 08:09:03'),
+(2, 3, '2015-07-10 08:09:03');
 
 -- --------------------------------------------------------
 
@@ -75,7 +97,16 @@ CREATE TABLE IF NOT EXISTS `jadwal` (
   `id_dosen` int(11) NOT NULL,
   PRIMARY KEY (`id_jadwal`),
   KEY `id_dosen` (`id_dosen`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `jadwal`
+--
+
+INSERT INTO `jadwal` (`id_jadwal`, `tanggal`, `terakhir_diedit`, `id_dosen`) VALUES
+(1, '2015-07-08', '2015-07-09 16:43:33', 2),
+(2, '2015-07-09', '2015-07-09 16:43:38', 2),
+(3, '2015-07-10', '2015-07-10 02:10:40', 2);
 
 -- --------------------------------------------------------
 
@@ -90,10 +121,23 @@ CREATE TABLE IF NOT EXISTS `janji` (
   `keterangan` mediumtext NOT NULL,
   `waktu_buat_janji` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` enum('Pending','Approved','Rejected') NOT NULL,
+  `alasan_reject` varchar(256) NOT NULL,
   KEY `id_mahasiswa` (`id_mahasiswa`),
   KEY `id_dosen` (`id_dosen`),
   KEY `id_mahasiswa_2` (`id_mahasiswa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `janji`
+--
+
+INSERT INTO `janji` (`id_mahasiswa`, `id_dosen`, `waktu_janji`, `keterangan`, `waktu_buat_janji`, `status`, `alasan_reject`) VALUES
+(2, 2, '2015-07-11 08:00:00', 'di mana aja boleh Pak', '2015-07-10 07:38:32', 'Rejected', 'ga bisa'),
+(3, 2, '2015-07-11 16:00:00', 'di mana aja boleh Pak', '2015-07-10 07:08:50', 'Pending', ''),
+(2, 2, '2015-07-11 12:00:00', 'bapak bisa ketemuan jam segitu? kira-kira dimana?', '2015-07-10 08:16:23', 'Pending', ''),
+(2, 2, '2015-07-12 12:00:00', 'bapak bisa ketemuan jam segitu? kira-kira dimana? 2', '2015-07-10 08:17:21', 'Pending', ''),
+(2, 2, '2015-07-11 12:00:00', 'test 3', '2015-07-10 08:19:15', 'Pending', ''),
+(2, 2, '2015-07-11 12:00:00', 'tolong Pak', '2015-07-10 08:21:00', 'Pending', '');
 
 -- --------------------------------------------------------
 
@@ -111,7 +155,15 @@ CREATE TABLE IF NOT EXISTS `kegiatan` (
   `id_jadwal` int(11) NOT NULL,
   PRIMARY KEY (`id_kegiatan`),
   KEY `id_jadwal` (`id_jadwal`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `kegiatan`
+--
+
+INSERT INTO `kegiatan` (`id_kegiatan`, `judul`, `jam_mulai`, `jam_selesai`, `tempat`, `letak_geografis`, `id_jadwal`) VALUES
+(2, 'Mengajar dikelas ATOL-1', '07:00:00', '09:15:00', 'R. 610 kampus UNIKOM', '', 1),
+(3, 'Mengajar RPL-1', '07:00:00', '09:15:00', 'R. 5401', '', 3);
 
 -- --------------------------------------------------------
 
@@ -139,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`id_mahasiswa`, `email`, `password`, `nama`, `no_telp`, `alamat`, `thn_masuk`, `jurusan`, `status`, `id_universitas`) VALUES
-(2, 'tiffanidesi@yahoo.com', '069e2dd171f61ecffb845190a7adf425', 'Desi Tiffani S.', '', '', 0000, 'Teknik Informatika 2012', 'Aktif', 1),
+(2, 'tiffanidesi@yahoo.com', '069e2dd171f61ecffb845190a7adf425', 'Desi Tiffani S.', '12345678', 'bandung', 2012, 'Teknik Informatika 2012', 'Aktif', 1),
 (3, 'ichafizha@gmail.com', '9088e8c69e4625a75b5068a3f77d777b', 'Hafizha Husnaisa', '', '', 0000, 'Teknik Informatika 2012', 'Aktif', 1);
 
 -- --------------------------------------------------------
@@ -218,6 +270,13 @@ INSERT INTO `universitas` (`id_universitas`, `nama`, `no_telp`, `alamat`, `kota`
 --
 
 --
+-- Constraints for table `dosen_highlight`
+--
+ALTER TABLE `dosen_highlight`
+  ADD CONSTRAINT `dosen_highlight_ibfk_2` FOREIGN KEY (`id_mahasiswa`) REFERENCES `mahasiswa` (`id_mahasiswa`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `dosen_highlight_ibfk_1` FOREIGN KEY (`id_dosen`) REFERENCES `dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `dosen_universitas`
 --
 ALTER TABLE `dosen_universitas`
@@ -234,8 +293,8 @@ ALTER TABLE `jadwal`
 -- Constraints for table `janji`
 --
 ALTER TABLE `janji`
-  ADD CONSTRAINT `janji_ibfk_2` FOREIGN KEY (`id_dosen`) REFERENCES `dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `janji_ibfk_1` FOREIGN KEY (`id_mahasiswa`) REFERENCES `mahasiswa` (`id_mahasiswa`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `janji_ibfk_1` FOREIGN KEY (`id_mahasiswa`) REFERENCES `mahasiswa` (`id_mahasiswa`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `janji_ibfk_2` FOREIGN KEY (`id_dosen`) REFERENCES `dosen` (`id_dosen`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `kegiatan`
